@@ -1,6 +1,6 @@
 # game_test
 
-To build this game you need cmake and make.
+You need cmake and make to build this game.
 
 ```
 sudo apt-get update
