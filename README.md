@@ -1,4 +1,4 @@
-#game_test
+# game_test
 
 To build this game you need cmake and make.
 Also you need a ___ncurses.h___ library. Next command will help you to install it:
