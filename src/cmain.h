@@ -8,13 +8,14 @@
 class cmain
 {
     private:
-        int cur_columns, cur_rows;
+        int columns, rows;
         int button;
-        static const int min_colomns = 60, min_rows = 20;
     public:
         cmain();
         ~cmain();
-        void mainloop();
+        void menu();
+        void gameloop();
+        void mainloop();    
 };
 
 #endif

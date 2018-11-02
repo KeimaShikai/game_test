@@ -6,7 +6,9 @@ find_package( Curses REQUIRED )
 include_directories( ${CURSES_INCLUDE_DIRS} )
 
 list( APPEND GAME_SOURCES "src/cmain.h" )
+list( APPEND GAME_SOURCES "src/player.h" )
 list( APPEND GAME_SOURCES "src/cmain.cpp" )
+list( APPEND GAME_SOURCES "src/player.cpp" )
 list( APPEND GAME_SOURCES "src/main.cpp" )
 
 add_executable( game ${GAME_SOURCES} )
