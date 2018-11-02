@@ -2,10 +2,10 @@
 
 To build this game you need cmake and make.
 
-'''
+```
 sudo apt-get update
 sudo apt-get install cmake make
-'''
+```
 
 Also you need a ___ncurses.h___ library.
 
