@@ -3,8 +3,8 @@
 You need cmake and make to build this game.
 
 ```
-sudo apt-get update
-sudo apt-get install cmake make
+$ apt-get update
+$ apt-get install cmake make
 ```
 
 Also you need a ___ncurses.h___ library.
