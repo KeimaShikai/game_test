@@ -15,7 +15,7 @@ class cmain
         cmain();
         ~cmain();
         void menu();
-        void gameloop();
+        void game();
         void mainloop();    
 };
 

@@ -27,7 +27,9 @@ void cmain::menu()
     mvprintw(rows / 2 - 3, 10, "Project_X");
     attroff(A_BOLD);
     mvprintw(rows / 2 - 1, 10, "Press '1' to start");
-    mvprintw(rows / 2, 10, "Press '2' to exit");
+    mvprintw(rows / 2, 10, "Press '2' to learn control");
+    mvprintw(rows / 2+1, 10, "Press '3' to see scoreboard");
+    mvprintw(rows / 2+2, 10, "Press '4' to exit");
 
     chtype ch;
     ch = 'a' | COLOR_PAIR(1);
@@ -50,7 +52,7 @@ void cmain::menu()
     refresh();
 }
 
-void cmain::gameloop()
+void cmain::game()
 {
     nodelay(stdscr, true);
     while(1)
@@ -72,9 +74,11 @@ void cmain::mainloop()
         switch(button = getch())
         {
             case 49:
-                //gameloop();
+                //game();
                 break;
-            case 50:
+            //case 50: TODO help()
+            //case 51: TODO scoreboard()
+            case 52:
                 checker = false;
                 break;
         }
