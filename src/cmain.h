@@ -8,7 +8,8 @@
 class cmain
 {
     private:
-        int columns, rows;
+        int x, y;
+        static const int columns = 90, rows = 25;
         int button;
     public:
         cmain();

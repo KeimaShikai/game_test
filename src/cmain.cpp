@@ -2,7 +2,7 @@
 
 cmain::cmain()
 {
-    printf("\e[8;25;90t");
+    printf("\e[8;%d;%dt", rows, columns);
     initscr();
     noecho();
     keypad(stdscr, true);
@@ -21,10 +21,13 @@ cmain::~cmain()
 
 void cmain::menu()
 {
-    getmaxyx(stdscr, rows, columns);
+    clear();
 
-    mvprintw(rows / 2 - 1, columns / 2, "Press '1' to start the game.");
-    mvprintw(rows / 2 + 1, columns / 2, "Press '2' to close the game.");
+    attron(A_BOLD);
+    mvprintw(rows / 2 - 3, 10, "Project_X");
+    attroff(A_BOLD);
+    mvprintw(rows / 2 - 1, 10, "Press '1' to start");
+    mvprintw(rows / 2, 10, "Press '2' to exit");
 
     chtype ch;
     ch = 'a' | COLOR_PAIR(1);
@@ -43,6 +46,7 @@ void cmain::menu()
         move(rows - 1, i);
         addch(ch);
     }
+
     refresh();
 }
 
@@ -52,7 +56,7 @@ void cmain::gameloop()
     while(1)
     {
         clear();
-        mvprintw(3,3,"smth");
+        //mvprintw(3,3,"smth");
         refresh();
     }
     nodelay(stdscr, false);
@@ -60,11 +64,10 @@ void cmain::gameloop()
 
 void cmain::mainloop()
 {
-    menu();
-
     bool checker = true;
     while(checker)
     {
+        menu();
         //mvprintw(3,3,"%d\t%c", button, button);
         switch(button = getch())
         {
