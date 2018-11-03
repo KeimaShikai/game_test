@@ -5,11 +5,15 @@ set( CURSES_HAVE_NCURSES_H TRUE )
 find_package( Curses REQUIRED )
 include_directories( ${CURSES_INCLUDE_DIRS} )
 
-list( APPEND GAME_SOURCES "src/cmain.h" )
-list( APPEND GAME_SOURCES "src/player.h" )
-list( APPEND GAME_SOURCES "src/cmain.cpp" )
-list( APPEND GAME_SOURCES "src/player.cpp" )
+list( APPEND GAME_HEADERS "src/headers" )
+
+list( APPEND GAME_SOURCES "src/headers/cmain.h" )
+list( APPEND GAME_SOURCES "src/headers/player.h" )
+list( APPEND GAME_SOURCES "src/sources/cmain.cpp" )
+list( APPEND GAME_SOURCES "src/sources/player.cpp" )
 list( APPEND GAME_SOURCES "src/main.cpp" )
+
+include_directories( ${GAME_HEADERS} )
 
 add_executable( game ${GAME_SOURCES} )
 
