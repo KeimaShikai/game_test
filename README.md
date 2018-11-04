@@ -3,13 +3,13 @@
 You need cmake and make to build this game.
 
 ```
-$ apt-get update
-$ apt-get install cmake make
+# apt-get update
+# apt-get install cmake make
 ```
 
 Also you need a ___ncurses.h___ library.
 
-`$ apt-get install libncurses5-dev libncursesw5-dev`
+`# apt-get install libncurses5-dev libncursesw5-dev`
 
 ***
 
