@@ -69,27 +69,48 @@ void cmain::game()
         main_character.draw();
 
         //a 97 //s 115 //d 100 //w 119 //space 32
+        //1 360 //2 258 //3 338 //4 260 //5 350
+        //6 261 //7 262 //8 259 //9 339
         switch(button_check = getch())
         {
-        case 97:
+        case 360:
             main_character.set_place_x(main_character.get_place_x() - 1);
-            break;
-        case 115:
             main_character.set_place_y(main_character.get_place_y() + 1);
             break;
-        case 100:
+        case 258:
+            main_character.set_place_y(main_character.get_place_y() + 1);
+            break;
+        case 338:
+            main_character.set_place_x(main_character.get_place_x() + 1);
+            main_character.set_place_y(main_character.get_place_y() + 1);
+            break;
+        case 260:
+            main_character.set_place_x(main_character.get_place_x() - 1);
+            break;
+        case 261:
             main_character.set_place_x(main_character.get_place_x() + 1);
             break;
-        case 119:
+        case 262:
+            main_character.set_place_x(main_character.get_place_x() - 1);
             main_character.set_place_y(main_character.get_place_y() - 1);
             break;
-        case 32:
+        case 259:
+            main_character.set_place_y(main_character.get_place_y() - 1);
+            break;
+        case 339:
+            main_character.set_place_x(main_character.get_place_x() + 1);
+            main_character.set_place_y(main_character.get_place_y() - 1);
+            break;
+        case 350:
             break;
         case 52:
             checker = false;
             break;
         }
-
+        if(main_character.get_place_x() < 1) main_character.set_place_x(1);
+        if(main_character.get_place_y() < 1) main_character.set_place_y(1);
+        if(main_character.get_place_x() > columns - 2) main_character.set_place_x(columns - 2);
+        if(main_character.get_place_y() > rows - 3) main_character.set_place_y(rows - 3);
         refresh();
     }
     nodelay(stdscr, false);
@@ -102,7 +123,7 @@ void cmain::help()
     attron(A_BOLD);
     mvprintw(rows / 2 - 3, 10, "Help");
     attroff(A_BOLD);
-    mvprintw(rows / 2 - 1, 10, "Use 'WASD' buttons to move your spaceship");
+    mvprintw(rows / 2 - 1, 10, "Use numpad to move your spaceship");
     mvprintw(rows / 2 + 1, 10, "To return to the menu press '4'");
 
     chtype ch;
@@ -134,6 +155,7 @@ void cmain::mainloop()
     {
         menu();
 
+        //button test
         //button = getch();
         //mvprintw(3,3,"%d\t%c", button, button);
 
