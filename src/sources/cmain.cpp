@@ -11,9 +11,9 @@ cmain::cmain()
     clear() && refresh();
     start_color();
     init_pair(1, COLOR_GREEN, COLOR_GREEN); //for a menu interface
-    init_pair(2, COLOR_WHITE, COLOR_BLACK); //for a spaceship in a 'good' state
-    init_pair(3, COLOR_YELLOW, COLOR_BLACK); //for a spaceship in a 'good' state
-    init_pair(4, COLOR_RED, COLOR_BLACK); //for a spaceship in a 'good' state
+    init_pair(2, COLOR_WHITE, COLOR_BLACK); //for a spaceship in a 'good' condition
+    init_pair(3, COLOR_YELLOW, COLOR_BLACK); //for a spaceship in a 'moderate' condition
+    init_pair(4, COLOR_RED, COLOR_BLACK); //for a spaceship in a 'bad' condition
     //colors for enemies
 }
 
@@ -59,7 +59,7 @@ void cmain::menu()
 void cmain::game()
 {
     //maybe its worth to generate stars or smth like that
-    player main_character(columns / 2, rows - 5);
+    player main_character(columns / 2, rows - 5, 'A', 2);
     bool checker = true;
     int button_check;
     nodelay(stdscr, true);
