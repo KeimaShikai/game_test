@@ -4,7 +4,8 @@
 #ifndef CHARGE_H
 #define CHARHE_H
 
-class charge :  public object
+//TODO remove this class and switch the charge:bullet to object:bullet
+class charge : public object
 {
     private:
 
@@ -13,6 +14,7 @@ class charge :  public object
         charge(int iX, int iY) : object(iX, iY) {}
         charge(int iX, int iY, char cSprite, int iColor)
             : object(iX, iY, cSprite, iColor) {}
+        //TODO collision_handle()
 };
 
 #endif

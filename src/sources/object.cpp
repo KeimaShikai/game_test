@@ -27,6 +27,7 @@ void object::draw()
 {
     move(my_place.y, my_place.x);
     addch(sprite);
+    refresh();
 }
 
 void object::set_place_x(int iX)

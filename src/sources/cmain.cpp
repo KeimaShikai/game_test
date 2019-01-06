@@ -67,6 +67,7 @@ void cmain::game()
     {
         clear();
         main_character.draw();
+        main_character.bullet_handler();
 
         //a 97 //s 115 //d 100 //w 119 //space 32
         //1 360 //2 258 //3 338 //4 260 //5 350
@@ -101,7 +102,8 @@ void cmain::game()
             main_character.set_place_x(main_character.get_place_x() + 1);
             main_character.set_place_y(main_character.get_place_y() - 1);
             break;
-        case 350:
+        case 350: 
+            main_character.shot();
             break;
         case 52:
             checker = false;
@@ -111,6 +113,7 @@ void cmain::game()
         if(main_character.get_place_y() < 1) main_character.set_place_y(1);
         if(main_character.get_place_x() > columns - 2) main_character.set_place_x(columns - 2);
         if(main_character.get_place_y() > rows - 3) main_character.set_place_y(rows - 3);
+
         refresh();
     }
     nodelay(stdscr, false);
