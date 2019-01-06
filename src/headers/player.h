@@ -1,7 +1,6 @@
 #include <ncurses.h>
 #include <unistd.h>
 #include "object.h"
-#include "charge.h"
 
 #ifndef PLAYER_H
 #define PLAYER_H
@@ -16,7 +15,7 @@ class player : public object
     private:
         int condition;
         bool isFired;
-        charge bullet;
+        object bullet;
 
     public:
         player();
