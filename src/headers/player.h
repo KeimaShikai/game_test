@@ -1,5 +1,4 @@
 #include <ncurses.h>
-#include <unistd.h>
 #include "object.h"
 
 #ifndef PLAYER_H
@@ -16,6 +15,8 @@ class player : public object
         int condition;
         bool isFired;
         object bullet;
+        int counterDelay;
+        static const int counterBorder = 1000;
 
     public:
         player();

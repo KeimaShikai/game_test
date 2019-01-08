@@ -11,10 +11,11 @@ cmain::cmain()
     clear() && refresh();
     start_color();
     init_pair(1, COLOR_GREEN, COLOR_GREEN); //for a menu interface
-    init_pair(2, COLOR_WHITE, COLOR_BLACK); //for a spaceship in a 'good' condition
+    init_pair(2, COLOR_GREEN, COLOR_BLACK); //for a spaceship in a 'good' condition
     init_pair(3, COLOR_YELLOW, COLOR_BLACK); //for a spaceship in a 'moderate' condition
     init_pair(4, COLOR_RED, COLOR_BLACK); //for a spaceship in a 'bad' condition
-    //colors for enemies
+    init_pair(5, COLOR_BLUE, COLOR_BLACK); //for enemies
+    init_pair(5, COLOR_WHITE, COLOR_BLACK); //for stars
 }
 
 cmain::~cmain()
@@ -58,47 +59,76 @@ void cmain::menu()
 
 void cmain::game()
 {
-    //maybe its worth to generate stars or smth like that
+    //TODO stars and background
+    factory_enemy enemies;
+    enemies.group_spawn();
     player main_character(columns / 2, rows - 5, 'A', 2);
+
     bool checker = true;
     int button_check;
     nodelay(stdscr, true);
+    clear();
+
     while(checker)
     {
-        clear();
+        //for debug
+        // mvprintw(2, 70, "%d", main_character.get_place_x()); //
+        // mvprintw(3, 70, "%d", main_character.get_place_y()); //
+        // mvprintw(5, 70, "%d", main_character.get_place_old_x()); //
+        // mvprintw(6, 70, "%d", main_character.get_place_old_y()); //
+
+        enemies.group_handler();
         main_character.draw();
         main_character.bullet_handler();
 
+        //********************//
         //a 97 //s 115 //d 100 //w 119 //space 32
+        //********************//
         //1 360 //2 258 //3 338 //4 260 //5 350
         //6 261 //7 262 //8 259 //9 339
         switch(button_check = getch())
         {
         case 360:
+            main_character.set_place_old_x(main_character.get_place_x());
+            main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() - 1);
             main_character.set_place_y(main_character.get_place_y() + 1);
             break;
         case 258:
+            main_character.set_place_old_x(main_character.get_place_x());
+            main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_y(main_character.get_place_y() + 1);
             break;
         case 338:
+            main_character.set_place_old_x(main_character.get_place_x());
+            main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() + 1);
             main_character.set_place_y(main_character.get_place_y() + 1);
             break;
         case 260:
+            main_character.set_place_old_x(main_character.get_place_x());
+            main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() - 1);
             break;
         case 261:
+            main_character.set_place_old_x(main_character.get_place_x());
+            main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() + 1);
             break;
         case 262:
+            main_character.set_place_old_x(main_character.get_place_x());
+            main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() - 1);
             main_character.set_place_y(main_character.get_place_y() - 1);
             break;
         case 259:
+            main_character.set_place_old_x(main_character.get_place_x());
+            main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_y(main_character.get_place_y() - 1);
             break;
         case 339:
+            main_character.set_place_old_x(main_character.get_place_x());
+            main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() + 1);
             main_character.set_place_y(main_character.get_place_y() - 1);
             break;
@@ -126,7 +156,7 @@ void cmain::help()
     attron(A_BOLD);
     mvprintw(rows / 2 - 3, 10, "Help");
     attroff(A_BOLD);
-    mvprintw(rows / 2 - 1, 10, "Use numpad to move your spaceship");
+    mvprintw(rows / 2 - 1, 10, "Use numpad to move your spaceship and shoot");
     mvprintw(rows / 2 + 1, 10, "To return to the menu press '4'");
 
     chtype ch;

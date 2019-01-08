@@ -12,6 +12,7 @@ class object
 {
     protected:
         coordinates my_place;
+        coordinates my_place_old;
         chtype sprite;
 
     public:
@@ -23,6 +24,10 @@ class object
         void set_place_y(int iY);
         int get_place_x();
         int get_place_y();
+        void set_place_old_x(int iX);
+        void set_place_old_y(int iY);
+        int get_place_old_x();
+        int get_place_old_y();
         void draw();
 };
 

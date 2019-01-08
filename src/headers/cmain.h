@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include "player.h"
+#include "factory_enemy.h"
 
 #ifndef CMAIN_H
 #define CMAIN_H
