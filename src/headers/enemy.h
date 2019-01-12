@@ -10,8 +10,9 @@ class enemy : public object
     private:
         bool isAlive;
         short int direction;
+        int delaySpawn;
         int delayCounter;
-        static const int delayBorder = 1500; //TODO random
+        int delayBorder;
 
     public:
         enemy() : object()

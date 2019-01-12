@@ -16,6 +16,7 @@ cmain::cmain()
     init_pair(4, COLOR_RED, COLOR_BLACK); //for a spaceship in a 'bad' condition
     init_pair(5, COLOR_BLUE, COLOR_BLACK); //for enemies
     init_pair(6, COLOR_WHITE, COLOR_BLACK); //for stars
+    init_pair(7, COLOR_MAGENTA, COLOR_BLACK); //for shooting
 }
 
 cmain::~cmain()
@@ -165,8 +166,11 @@ void cmain::help()
     attron(A_BOLD);
     mvprintw(rows / 2 - 3, 10, "Help");
     attroff(A_BOLD);
-    mvprintw(rows / 2 - 1, 10, "Use numpad to move your spaceship and shoot");
-    mvprintw(rows / 2 + 1, 10, "To return to the menu press '4'");
+    mvprintw(rows / 2 - 1, 10, "Use numpad to play the game (turn it on!)");
+    mvprintw(rows / 2,     10, "Use 1,2,3,4,6,7,8,9 to move your spaceship");
+    mvprintw(rows / 2 + 1, 10, "Use 5 to shoot");
+    mvprintw(rows / 2 + 2, 10, "Use 0 to pause the game");
+    mvprintw(rows / 2 + 4, 10, "To return to the menu press '4'");
 
     chtype ch;
     ch = 'a' | COLOR_PAIR(1);

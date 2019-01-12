@@ -1,6 +1,6 @@
 #include "player.h"
 
-player::player() : bullet(my_place.x, my_place.y, '^', 2)
+player::player() : bullet(my_place.x, my_place.y, '^', 7)
 {
     my_place.y = my_place.x = 0;
     my_place_old.y = my_place_old.x = 0;
@@ -9,7 +9,7 @@ player::player() : bullet(my_place.x, my_place.y, '^', 2)
     counterDelay = 0;
 }
 
-player::player(int iX, int iY) : bullet(my_place.x, my_place.y, '^', 2)
+player::player(int iX, int iY) : bullet(my_place.x, my_place.y, '^', 7)
 {
     my_place.y = my_place_old.y = iY;
     my_place.x = my_place_old.x = iX;
@@ -19,7 +19,7 @@ player::player(int iX, int iY) : bullet(my_place.x, my_place.y, '^', 2)
 }
 
 player::player(int iX, int iY, char cSprite, int iColor)
-    : bullet(my_place.x, my_place.y, '^', 2)
+    : bullet(my_place.x, my_place.y, '^', 7)
 {
     my_place.y = my_place_old.y = iY;
     my_place.x = my_place_old.x = iX;
