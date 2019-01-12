@@ -15,7 +15,7 @@ cmain::cmain()
     init_pair(3, COLOR_YELLOW, COLOR_BLACK); //for a spaceship in a 'moderate' condition
     init_pair(4, COLOR_RED, COLOR_BLACK); //for a spaceship in a 'bad' condition
     init_pair(5, COLOR_BLUE, COLOR_BLACK); //for enemies
-    init_pair(5, COLOR_WHITE, COLOR_BLACK); //for stars
+    init_pair(6, COLOR_WHITE, COLOR_BLACK); //for stars
 }
 
 cmain::~cmain()
@@ -134,6 +134,15 @@ void cmain::game()
             break;
         case 350: 
             main_character.shot();
+            break;
+        case 331:
+            mvprintw(rows - 1, columns / 2 - 2, "pause");
+            while(true)
+            {
+                button_check = getch();
+                if (button_check == 331) break;
+            }
+            mvprintw(rows - 1, columns / 2 - 2, "     ");
             break;
         case 52:
             checker = false;
