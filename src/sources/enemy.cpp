@@ -52,3 +52,9 @@ void enemy::shift()
     ++delayCounter;
     end:;
 }
+
+void enemy::isCollide(int iX, int iY)
+{
+    if (my_place.x == iX && my_place.y == iY)
+        isAlive = false;
+}

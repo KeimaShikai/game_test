@@ -71,3 +71,13 @@ void player::bullet_handler()
         addch(' ');
     }
 }
+
+int player::get_bullet_place_x()
+{
+    return bullet.get_place_x();
+}
+
+int player::get_bullet_place_y()
+{
+    return bullet.get_place_y();
+}

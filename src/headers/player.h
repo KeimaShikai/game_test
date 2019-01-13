@@ -25,6 +25,8 @@ class player : public object
         bool checkCondition();
         void shot();
         void bullet_handler();
+        int get_bullet_place_x();
+        int get_bullet_place_y();
         //TODO collision_check()
 };
 

@@ -25,3 +25,9 @@ void factory_enemy::group_handler()
     for (std::vector<enemy>::iterator i = factoryOfEnemies.begin(); i != factoryOfEnemies.end(); ++i)
         i->shift();
 }
+
+void factory_enemy::group_collision_chech(int iX, int iY)
+{
+    for (std::vector<enemy>::iterator i = factoryOfEnemies.begin(); i != factoryOfEnemies.end(); ++i)
+        i->isCollide(iX, iY);
+}

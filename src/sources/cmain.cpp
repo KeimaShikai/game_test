@@ -78,6 +78,10 @@ void cmain::game()
         // mvprintw(5, 70, "%d", main_character.get_place_old_x()); //
         // mvprintw(6, 70, "%d", main_character.get_place_old_y()); //
 
+        enemies.group_collision_chech(main_character.get_place_x(),
+                                      main_character.get_place_y());
+        enemies.group_collision_chech(main_character.get_bullet_place_x(),
+                                      main_character.get_bullet_place_y());
         enemies.group_handler();
         main_character.draw();
         main_character.bullet_handler();
