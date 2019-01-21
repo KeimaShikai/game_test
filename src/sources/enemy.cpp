@@ -53,8 +53,12 @@ void enemy::shift()
     end:;
 }
 
-void enemy::isCollide(int iX, int iY)
+bool enemy::isCollide(int iX, int iY)
 {
     if (my_place.x == iX && my_place.y == iY)
+    {
         isAlive = false;
+        return true;
+    }
+    else return false;
 }

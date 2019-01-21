@@ -30,7 +30,7 @@ class enemy : public object
         }
         void spawn();
         void shift();
-        void isCollide(int iX, int iY);
+        bool isCollide(int iX, int iY);
 };
 
 #endif

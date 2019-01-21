@@ -23,15 +23,11 @@ player::player(int iX, int iY, char cSprite, int iColor)
 {
     my_place.y = my_place_old.y = iY;
     my_place.x = my_place_old.x = iX;
-    sprite = cSprite | COLOR_PAIR(iColor);
+    symbSprite = cSprite;
+    sprite = symbSprite | COLOR_PAIR(iColor);
     condition = good;
     isFired = false;
     counterDelay = 0;
-}
-
-bool player::checkCondition()
-{
-    return condition;
 }
 
 void player::shot()
@@ -80,4 +76,29 @@ int player::get_bullet_place_x()
 int player::get_bullet_place_y()
 {
     return bullet.get_place_y();
+}
+
+bool player::check_condition()
+{
+    if (condition != dead)
+        return true;
+    else
+        return false;
+}
+
+void player::change_condition(int i)
+{
+    condition += i;
+    switch (condition)
+    {
+    case good:
+        sprite = symbSprite | COLOR_PAIR(2);
+        break;
+    case average:
+        sprite = symbSprite | COLOR_PAIR(3);
+        break;
+    case bad:
+        sprite = symbSprite | COLOR_PAIR(4);
+        break;
+    }
 }

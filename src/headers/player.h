@@ -15,6 +15,7 @@ class player : public object
         int condition;
         bool isFired;
         object bullet;
+        char symbSprite; //TODO unify char setting
         int counterDelay;
         static const int counterBorder = 1000;
 
@@ -22,12 +23,12 @@ class player : public object
         player();
         player(int iX, int iY);
         player(int iX, int iY, char cSprite, int iColor);
-        bool checkCondition();
         void shot();
         void bullet_handler();
         int get_bullet_place_x();
         int get_bullet_place_y();
-        //TODO collision_check()
+        bool check_condition();
+        void change_condition(int i);
 };
 
 #endif

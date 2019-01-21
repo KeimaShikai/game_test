@@ -15,7 +15,7 @@ class factory_enemy
         ~factory_enemy();
         void group_spawn();
         void group_handler();
-        void group_collision_chech(int iX, int iY);
+        bool group_collision_chech(int iX, int iY);
 };
 
 #endif

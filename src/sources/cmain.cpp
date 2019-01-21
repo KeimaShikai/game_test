@@ -10,6 +10,7 @@ cmain::cmain()
     curs_set(0);
     clear() && refresh();
     start_color();
+    //TODO enum for colors
     init_pair(1, COLOR_GREEN, COLOR_GREEN); //for a menu interface
     init_pair(2, COLOR_GREEN, COLOR_BLACK); //for a spaceship in a 'good' condition
     init_pair(3, COLOR_YELLOW, COLOR_BLACK); //for a spaceship in a 'moderate' condition
@@ -78,10 +79,14 @@ void cmain::game()
         // mvprintw(5, 70, "%d", main_character.get_place_old_x()); //
         // mvprintw(6, 70, "%d", main_character.get_place_old_y()); //
 
-        enemies.group_collision_chech(main_character.get_place_x(),
-                                      main_character.get_place_y());
-        enemies.group_collision_chech(main_character.get_bullet_place_x(),
-                                      main_character.get_bullet_place_y());
+        if(enemies.group_collision_chech(main_character.get_place_x(),
+                                      main_character.get_place_y()))
+        {
+            main_character.change_condition(-1);
+        }
+        if(enemies.group_collision_chech(main_character.get_bullet_place_x(),
+                                      main_character.get_bullet_place_y()));
+            //TODO bullet reaction
         enemies.group_handler();
         main_character.draw();
         main_character.bullet_handler();
@@ -157,6 +162,12 @@ void cmain::game()
         if(main_character.get_place_y() < 1) main_character.set_place_y(1);
         if(main_character.get_place_x() > columns - 2) main_character.set_place_x(columns - 2);
         if(main_character.get_place_y() > rows - 3) main_character.set_place_y(rows - 3);
+
+        if(!main_character.check_condition())
+        {
+            break;
+            //TODO game over
+        }
 
         refresh();
     }
