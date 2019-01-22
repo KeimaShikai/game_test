@@ -27,7 +27,7 @@ class player : public object
         void bullet_handler();
         int get_bullet_place_x();
         int get_bullet_place_y();
-        bool check_condition();
+        int check_condition();
         void change_condition(int i);
 };
 

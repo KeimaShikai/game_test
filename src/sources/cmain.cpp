@@ -18,6 +18,8 @@ cmain::cmain()
     init_pair(5, COLOR_BLUE, COLOR_BLACK); //for enemies
     init_pair(6, COLOR_WHITE, COLOR_BLACK); //for stars
     init_pair(7, COLOR_MAGENTA, COLOR_BLACK); //for shooting
+    init_pair(8, COLOR_WHITE, COLOR_WHITE); //for healthbar
+    init_pair(9, COLOR_RED, COLOR_RED); //for healthbar
 }
 
 cmain::~cmain()
@@ -71,11 +73,14 @@ void cmain::game()
     nodelay(stdscr, true);
     clear();
 
+    healthbar health(12, rows - 1);
+    scorebar score(columns - 25, rows - 1);
+
     while(checker)
     {
         //for debug
-        // mvprintw(2, 70, "%d", main_character.get_place_x()); //
-        // mvprintw(3, 70, "%d", main_character.get_place_y()); //
+        // mvprintw(2, 70, "%d", main_character.get_place_x());     //
+        // mvprintw(3, 70, "%d", main_character.get_place_y());     //
         // mvprintw(5, 70, "%d", main_character.get_place_old_x()); //
         // mvprintw(6, 70, "%d", main_character.get_place_old_y()); //
 
@@ -83,10 +88,13 @@ void cmain::game()
                                       main_character.get_place_y()))
         {
             main_character.change_condition(-1);
+            health.update(main_character.check_condition());
         }
         if(enemies.group_collision_chech(main_character.get_bullet_place_x(),
-                                      main_character.get_bullet_place_y()));
-            //TODO bullet reaction
+                                      main_character.get_bullet_place_y()))
+        {
+            score.update(1);
+        }
         enemies.group_handler();
         main_character.draw();
         main_character.bullet_handler();
@@ -163,10 +171,16 @@ void cmain::game()
         if(main_character.get_place_x() > columns - 2) main_character.set_place_x(columns - 2);
         if(main_character.get_place_y() > rows - 3) main_character.set_place_y(rows - 3);
 
-        if(!main_character.check_condition())
+        if(main_character.check_condition() == dead)
         {
+            mvprintw(rows / 2 - 2, columns / 2 - 4, "GAME OVER");
+            mvprintw(rows / 2 + 2, columns / 2 - 7, "To exit press '4'");
+            while(true)
+            {
+                button_check = getch();
+                if (button_check == 52) break;
+            }
             break;
-            //TODO game over
         }
 
         refresh();
@@ -216,7 +230,7 @@ void cmain::mainloop()
     {
         menu();
 
-        //button test
+        //for button test
         //button = getch();
         //mvprintw(3,3,"%d\t%c", button, button);
 

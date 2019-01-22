@@ -78,12 +78,9 @@ int player::get_bullet_place_y()
     return bullet.get_place_y();
 }
 
-bool player::check_condition()
+int player::check_condition()
 {
-    if (condition != dead)
-        return true;
-    else
-        return false;
+    return condition;
 }
 
 void player::change_condition(int i)
