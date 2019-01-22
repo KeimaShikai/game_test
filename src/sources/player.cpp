@@ -65,6 +65,8 @@ void player::bullet_handler()
         isFired = false;
         move(bullet.get_place_y(), bullet.get_place_x());
         addch(' ');
+        bullet.set_place_x(-2);
+        bullet.set_place_y(-2);
     }
 }
 
