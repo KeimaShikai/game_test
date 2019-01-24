@@ -4,7 +4,7 @@ factory_enemy::factory_enemy()
 {
     for (int i = 0; i < 7; ++i)
     {
-        enemy sample(0, 0, 'Y', 5);
+        enemy sample(0, 0, 'o', 5);
         factoryOfEnemies.push_back(sample);
     }
 }

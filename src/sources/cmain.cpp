@@ -73,6 +73,14 @@ void cmain::game()
     nodelay(stdscr, true);
     clear();
 
+    chtype ch;
+    ch = '=' | COLOR_PAIR(6) | A_BOLD;
+    for (int i = 0; i < columns; ++i)
+    {
+        move(rows - 2, i);
+        addch(ch);
+    }
+
     healthbar health(12, rows - 1);
     scorebar score(columns - 25, rows - 1);
 
@@ -174,7 +182,7 @@ void cmain::game()
         if(main_character.check_condition() == dead)
         {
             mvprintw(rows / 2 - 2, columns / 2 - 4, "GAME OVER");
-            mvprintw(rows / 2 + 2, columns / 2 - 7, "To exit press '4'");
+            mvprintw(rows / 2 + 2, columns / 2 - 8, "To exit press '4'");
             while(true)
             {
                 button_check = getch();

@@ -22,7 +22,7 @@ void enemy::shift()
     }
     if (isAlive)
         if (my_place.x >= 1 && my_place.x < 89
-                && my_place.y >= 0 && my_place.y < 23)
+                && my_place.y >= 0 && my_place.y < 22)
         {
             if (delayCounter == delayBorder)
             {
