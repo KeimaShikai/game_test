@@ -112,61 +112,83 @@ void cmain::game()
         //********************//
         //1 360 //2 258 //3 338 //4 260 //5 350
         //6 261 //7 262 //8 259 //9 339
-        switch(button_check = getch())
+        button_check = getch();
+        if(button_check == 97 || button_check == 132 || button_check == 260)
+            button_check = left;
+        if(button_check == 113 || button_check == 185 || button_check == 262)
+            button_check = left_up;
+        if(button_check == 119 || button_check == 134 || button_check == 259)
+            button_check = up;
+        if(button_check == 101 || button_check == 131 || button_check == 339)
+            button_check = right_up;
+        if(button_check == 100 || button_check == 178 || button_check == 261)
+            button_check = right;
+        if(button_check == 338)
+            button_check = right_down;
+        if(button_check == 115 || button_check == 139 || button_check == 258)
+            button_check = down;
+        if(button_check == 360)
+            button_check = left_down;
+        if(button_check == 32 || button_check == 350)
+            button_check = fire;
+        if(button_check == 102 || button_check == 176 || button_check == 331)
+            button_check = pause;
+
+        switch(button_check)
         {
-        case 360:
+        case left_down:
             main_character.set_place_old_x(main_character.get_place_x());
             main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() - 1);
             main_character.set_place_y(main_character.get_place_y() + 1);
             break;
-        case 258:
+        case down:
             main_character.set_place_old_x(main_character.get_place_x());
             main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_y(main_character.get_place_y() + 1);
             break;
-        case 338:
+        case right_down:
             main_character.set_place_old_x(main_character.get_place_x());
             main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() + 1);
             main_character.set_place_y(main_character.get_place_y() + 1);
             break;
-        case 260:
+        case left:
             main_character.set_place_old_x(main_character.get_place_x());
             main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() - 1);
             break;
-        case 261:
+        case right:
             main_character.set_place_old_x(main_character.get_place_x());
             main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() + 1);
             break;
-        case 262:
+        case left_up:
             main_character.set_place_old_x(main_character.get_place_x());
             main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() - 1);
             main_character.set_place_y(main_character.get_place_y() - 1);
             break;
-        case 259:
+        case up:
             main_character.set_place_old_x(main_character.get_place_x());
             main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_y(main_character.get_place_y() - 1);
             break;
-        case 339:
+        case right_up:
             main_character.set_place_old_x(main_character.get_place_x());
             main_character.set_place_old_y(main_character.get_place_y());
             main_character.set_place_x(main_character.get_place_x() + 1);
             main_character.set_place_y(main_character.get_place_y() - 1);
             break;
-        case 350: 
+        case fire:
             main_character.shot();
             break;
-        case 331:
+        case pause:
             mvprintw(rows - 1, columns / 2 - 2, "pause");
             while(true)
             {
                 button_check = getch();
-                if (button_check == 331) break;
+                if (button_check == 102 || button_check == 176 || button_check == 331) break;
             }
             mvprintw(rows - 1, columns / 2 - 2, "     ");
             break;
@@ -203,11 +225,13 @@ void cmain::help()
     attron(A_BOLD);
     mvprintw(rows / 2 - 3, 10, "Help");
     attroff(A_BOLD);
-    mvprintw(rows / 2 - 1, 10, "Use numpad to play the game (turn it on!)");
-    mvprintw(rows / 2,     10, "Use 1,2,3,4,6,7,8,9 to move your spaceship");
-    mvprintw(rows / 2 + 1, 10, "Use 5 to shoot");
-    mvprintw(rows / 2 + 2, 10, "Use 0 to pause the game");
-    mvprintw(rows / 2 + 4, 10, "To return to the menu press '4'");
+    mvprintw(rows / 2 - 1, 10, "There are two types of control setting, that you can use to play this game");
+    mvprintw(rows / 2,     10, "You can play using QWEASD to move your spaceship");
+    mvprintw(rows / 2 + 1, 10, "Use 'space' to shoot and F to pause the game");
+    mvprintw(rows / 2 + 2, 10, "Also you can use numpad to play the game (turn it on with NumLock first!)");
+    mvprintw(rows / 2 + 3, 10, "In this case use 1,2,3,4,6,7,8,9 to move spaceship");
+    mvprintw(rows / 2 + 4, 10, "Use 5 to shoot and 0 to pause the game");
+    mvprintw(rows / 2 + 6, 10, "To return to the menu press any key");
 
     chtype ch;
     ch = 'a' | COLOR_PAIR(1);

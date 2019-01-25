@@ -5,6 +5,20 @@
 #ifndef ENEMY_H
 #define ENEMY_H
 
+enum button_click
+{
+    left,
+    left_up,
+    up,
+    right_up,
+    right,
+    right_down,
+    down,
+    left_down,
+    fire,
+    pause
+};
+
 class enemy : public object
 {
     private:
